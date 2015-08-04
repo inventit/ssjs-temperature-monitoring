@@ -11,6 +11,23 @@
   "bugs" : {
     "mail" : "egypt@yourinventit.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:inventit/ssjs-cpu-usage-monitoring.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-compress": "^0.13.0",
+    "grunt-contrib-copy": "~0.7.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-uglify": "~0.6.0",
+    "grunt-jsdoc": "~0.5.7",
+    "grunt-mocha-chai-sinon": "~0.0.8",
+    "nodeunit": "*",
+    "sinon": ">= 1.5.2"
+  },
   "dependencies": {
     "moat": ">=1.0.0 <2.0.0"
   },
