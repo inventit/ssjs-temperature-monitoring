@@ -22,12 +22,12 @@ module.exports = nodeUnit.testCase({
     var data1 = {"temperature": 42750, "timestamp": 1438676535986};
     var data2 = {"temperature": 42750, "timestamp": 1438676525977};
     var data3 = {"temperature": 42625, "timestamp": 1438676576014};
-
+    var datum = {"array": [data1, data2, data3]};
     var result1 = {"temperature": 42750, "timestamp": 1438676535986, "uid": "b91f10f4-6a1e-4ffa-9941-a1bf2a4c7cf2"};
     var result2 = {"temperature": 42750, "timestamp": 1438676525977, "uid": "c0c30cdd-c94a-4c60-9987-453e087f8535"};
     var result3 = {"temperature": 42625, "timestamp": 1438676576014, "uid": "cf5fc423-d14d-4bdf-a3ad-3001e34ef6ce"};
 
-    context.setObjects([data1, data2, data3]);
+    context.setObjects([datum]);
     database.insert.withArgs(data1).returns(result1);
     database.insert.withArgs(data2).returns(result2);
     database.insert.withArgs(data3).returns(result3);
@@ -36,10 +36,10 @@ module.exports = nodeUnit.testCase({
       require(script);
     });
 
-    assert.equal(true, database.insert.withArgs(data1).called);
-    assert.equal(true, database.insert.withArgs(data2).called);
-    assert.equal(true, database.insert.withArgs(data3).called);
-    assert.equal(true, session.notifyAsync.called);
+    assert.equal(true, database.insert.withArgs(data1).calledOnce);
+    assert.equal(true, database.insert.withArgs(data2).calledOnce);
+    assert.equal(true, database.insert.withArgs(data3).calledOnce);
+    assert.equal(true, session.notifyAsync.withArgs([datum]).calledOnce);
     assert.done();
   },
 
@@ -51,7 +51,7 @@ module.exports = nodeUnit.testCase({
     var data1 = {"temperature": 42750, "timestamp": 1438676535986, "uid": "b91f10f4-6a1e-4ffa-9941-a1bf2a4c7cf2"};
     var data2 = {"temperature": 42750, "timestamp": 1438676525977, "uid": "c0c30cdd-c94a-4c60-9987-453e087f8535"};
     var data3 = {"temperature": 42625, "timestamp": 1438676576014, "uid": "cf5fc423-d14d-4bdf-a3ad-3001e34ef6ce"};
-    var datum = {"array": [data1, data2, data3]};                                              
+    var datum = {"array": [data1, data2, data3]};
     context.setObjects([datum]);
     database.insert.withArgs(data1).returns(data1);
     database.insert.withArgs(data2).returns(data2);
@@ -61,10 +61,10 @@ module.exports = nodeUnit.testCase({
       require(script);
     });
 
-    assert.equal(true, database.insert.withArgs(data1).called);
-    assert.equal(true, database.insert.withArgs(data2).called);
-    assert.equal(true, database.insert.withArgs(data3).called);
-    assert.equal(true, session.notifyAsync.called);
+    assert.equal(true, database.insert.withArgs(data1).calledOnce);
+    assert.equal(true, database.insert.withArgs(data2).calledOnce);
+    assert.equal(true, database.insert.withArgs(data3).calledOnce);
+    assert.equal(true, session.notifyAsync.withArgs([datum]).calledOnce);
     assert.done();
   },
 
@@ -89,10 +89,10 @@ module.exports = nodeUnit.testCase({
       require(script);
     });
 
-    assert.equal(true, database.update.withArgs(data1).called);
-    assert.equal(true, database.update.withArgs(data2).called);
-    assert.equal(true, database.update.withArgs(data3).called);
-    assert.equal(true, session.notifyAsync.called);
+    assert.equal(true, database.update.withArgs(data1).calledOnce);
+    assert.equal(true, database.update.withArgs(data2).calledOnce);
+    assert.equal(true, database.update.withArgs(data3).calledOnce);
+    assert.equal(true, session.notifyAsync.withArgs([datum]).calledOnce);
     assert.done();
   }
 
