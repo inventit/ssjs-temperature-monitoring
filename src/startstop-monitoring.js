@@ -21,6 +21,7 @@ var TAG = "startstop-monitoring";
   var device = mapper.newModelStub(args.uid);
   device.startstop(session, args.command, {
     success: function(obj) {
+      session.setWaitingForResultNotification(true);
       session.log(TAG, 'Successful');
     },
     error: function(type, code) {
