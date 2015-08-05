@@ -48,7 +48,6 @@ module.exports = nodeUnit.testCase({
       require(script);
     });
 
-    assert.equal(true, session.setWaitingForResultNotification.withArgs(true).called);
     assert.equal(false, session.notifyAsync.called);
     assert.done();
   },
@@ -87,7 +86,6 @@ module.exports = nodeUnit.testCase({
       require(script);
     });
 
-    assert.equal(false, session.setWaitingForResultNotification.withArgs(true).called);
     assert.equal(true, session.notifyAsync.called);
     assert.done();
   }
